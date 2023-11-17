@@ -1,9 +1,9 @@
-import db from "./db";
+import db from "./db.js";
 
 // hydrate comments based on an array of item ids
-export default function fetch(ids) {
+export default function fetch(ids: any) {
   return Promise.all(
-    ids.map(async (id) => {
+    ids.map(async (id: any) => {
       const item = await db.child("item").child(id).once("value");
       const val = item.val();
       return {
