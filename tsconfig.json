@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "target": "esnext",
+    "downlevelIteration": true,
+    "esModuleInterop": true,
+    "module": "nodenext",
+    "skipLibCheck": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "jsx": "react-jsx",
+    "outDir": "./dist",
+    "composite": true
+  },
+  "include": ["./src", "./lib", "src/components"],
+  "references": [
+    {
+      "path": "./tsconfig.node.json"
+    }
+  ]
+}
