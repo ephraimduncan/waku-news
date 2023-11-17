@@ -1,4 +1,4 @@
-import db from "./db";
+import db from "./db.js";
 
 export default async function getItem(id) {
   const item = await db.child("item").child(id).once("value");

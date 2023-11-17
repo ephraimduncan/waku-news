@@ -36,13 +36,16 @@ export default defineRouter(
     if (isReservedId(id)) {
       return null;
     }
+
     const mapping: Record<string, string> = {};
     const items = id.split("/");
+
     for (let i = 0; i < items.length - 1; ++i) {
       const dir = path.join(routesDir, ...items.slice(0, i));
       if (!fs.existsSync(dir)) {
         return null;
       }
+
       const files = fs.readdirSync(dir);
       if (!files.includes(items[i]!)) {
         const slug = files.find((file) => file.match(/^(\[\w+\]|_\w+_)$/));
@@ -52,16 +55,19 @@ export default defineRouter(
         }
       }
     }
+
     if (
       !fs.existsSync(path.join(routesDir, ...items) + ".js") &&
       !fs.existsSync(path.join(routesDir, ...items) + ".tsx")
     ) {
       return null;
     }
+
     const Route = getRoute(items);
     const Component = (props: Record<string, unknown>) => (
       <Route {...props} {...mapping} />
     );
+
     return Component;
   },
   // getPathsForBuild
